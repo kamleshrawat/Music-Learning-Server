@@ -40,7 +40,7 @@ export const register = TryCatch(async (req, res) => {
     otp,
   };
 
-  await sendMail(email, "E learning", data);
+  await sendMail(email, "Music Learning", data);
 
   res.status(200).json({
     message: "Otp send to your mail",
@@ -88,7 +88,7 @@ export const loginUser = TryCatch(async (req, res) => {
 
   if (!mathPassword)
     return res.status(400).json({
-      message: "wrong Password",
+      message: "Wrong Password",
     });
 
   const token = jwt.sign({ _id: user._id }, process.env.Jwt_Sec, {
@@ -122,7 +122,7 @@ export const forgotPassword = TryCatch(async (req, res) => {
 
   const data = { email, token };
 
-  await sendForgotMail("E learning", data);
+  await sendForgotMail("Music Learning", data);
 
   user.resetPasswordExpire = Date.now() + 5 * 60 * 1000;
 
